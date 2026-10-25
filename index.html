@@ -211,7 +211,7 @@ function renderHome(){
     </section>`;
   });
   h += `<button class="allbtn" type="button" data-go="uniforms">Uniform schedule (all days)</button>
-        <footer>Tap any button to see the lineup. Songs open on YouTube.<br>Leads: open your lineup and tap “Edit lineup” to add or change songs.</footer>`;
+        <footer>Tap any button to see the lineup. Songs open on YouTube.<br>To add or change songs, open a lineup and tap “Edit lineup”.</footer>`;
   $("homeBody").innerHTML = h;
 }
 
@@ -252,7 +252,7 @@ function renderDetail(token){
 /* ---------- Editing ---------- */
 function startEdit(n,k){
   const d = PROGRAMME.days[n-1];
-  editing = { n, k, unlocked: !!pin, msg:"", err:false, busy:false, deleted:[],
+  editing = { n, k, unlocked: true, msg:"", err:false, busy:false, deleted:[],
     sections: d[k].length ? d[k].map(p=>({id:p.id, name:p.name, lead:p.lead, songs:p.songs.map(s=>({...s}))}))
                           : [{id:null, name:DEFAULT_SECTION[k], lead:"", songs:[{t:"",by:"",yt:""}]}] };
   renderDetail(current);
