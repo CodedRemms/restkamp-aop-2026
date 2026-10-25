@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Song lineups and uniform schedule for the RESTKAMP Choir's Assemblies of Praise programme.">
+<meta property="og:title" content="Assemblies of Praise · RESTKAMP Choir">
+<meta property="og:description" content="Tap to see each day's Praise & Worship and Ministration lineup, plus uniforms.">
+<meta name="theme-color" content="#2b1f5c">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Assemblies of Praise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#f6f4fb; --surface:#ffffff; --ink:#1d1830; --muted:#625b78; --line:#e2ddef;
+  --band:#2b1f5c; --band-ink:#fbf7ec; --gold:#d9a521; --gold-ink:#3a2a00;
+  --pw:#2b1f5c; --min:#8a3b12; --pw-soft:#ece8fa; --min-soft:#fbeee6;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Figtree",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#120f1d; --surface:#1d1930; --ink:#f1eef9; --muted:#aaa3c2; --line:#2f2948;
+  --band:#211845; --band-ink:#fbf7ec; --gold:#e8b938; --gold-ink:#2a1e00;
+  --pw:#b9a9ff; --min:#f2a476; --pw-soft:#262043; --min-soft:#2e1f1a; color-scheme:dark}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+.wrap{max-width:560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{background:var(--band);color:var(--band-ink)}
+header .wrap{padding-block:28px 26px;display:grid;gap:6px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(34px,10vw,48px);line-height:1;margin:0;text-wrap:balance}
+.sub{margin:4px 0 0;opacity:.85;font-size:15px}
+main .wrap{padding-block:20px 40px;display:grid;gap:22px}
+.day{display:grid;gap:10px}
+.dayhead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.dayhead h2{font-family:var(--display);font-weight:800;font-size:26px;margin:0}
+.dayhead .date{color:var(--muted);font-size:14px}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:4px;align-content:space-between;min-height:104px;padding:14px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);transition:transform .12s ease,border-color .12s}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.btn:active{transform:scale(.97)}
+.btn .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.btn .t{font-family:var(--display);font-weight:800;font-size:19px;line-height:1.1}
+.btn .lead{font-size:13px;color:var(--muted)}
+.btn.pw{background:var(--pw-soft)} .btn.pw .k,.btn.pw .t{color:var(--pw)}
+.btn.min{background:var(--min-soft)} .btn.min .k,.btn.min .t{color:var(--min)}
+.uni{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
+.swatch{width:14px;height:14px;border-radius:50%;border:1px solid var(--line);flex:none}
+.allbtn{all:unset;box-sizing:border-box;cursor:pointer;text-align:center;padding:14px;border-radius:14px;background:var(--band);color:var(--band-ink);font-weight:600}
+.allbtn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);background:var(--band);color:var(--band-ink);z-index:5}
+.top .wrap{padding-block:12px;display:flex;align-items:center;gap:12px}
+.back{all:unset;cursor:pointer;font-weight:600;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.12)}
+.back:focus-visible{outline:3px solid var(--gold)}
+.top .crumb{font-size:14px;opacity:.85;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dhead{display:grid;gap:4px}
+.dhead h2{font-family:var(--display);font-weight:800;font-size:30px;line-height:1.05;margin:0;text-wrap:balance}
+ol.songs{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:s}
+ol.songs li{counter-increment:s;display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center;padding:12px;border-radius:12px;background:var(--surface);border:1px solid var(--line)}
+ol.songs li::before{content:counter(s);font-family:var(--display);font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums;text-align:center}
+.song{min-width:0}
+.song b{display:block;font-weight:600}
+.song span{font-size:13px;color:var(--muted)}
+.yt{font-size:13px;font-weight:600;text-decoration:none;padding:8px 12px;border-radius:999px;background:var(--gold);color:var(--gold-ink);white-space:nowrap}
+.yt:focus-visible{outline:3px solid var(--ink)}
+.yt.search{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.section-label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:6px 0 -2px}
+.empty{padding:18px;border-radius:12px;border:1.5px dashed var(--line);color:var(--muted);text-align:center}
+.part{display:grid;gap:8px}
+.parthead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:8px}
+.parthead h3{font-family:var(--display);font-weight:800;font-size:20px;margin:0}
+.parthead .who{font-size:14px;color:var(--muted)}
+.wear{display:grid;gap:6px;padding:12px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);font-size:14px}
+.wear div{display:grid;grid-template-columns:62px 1fr;gap:8px}
+.wear b{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.swatches{display:inline-flex;gap:3px;flex:none}
+.swatch.ankara{background:conic-gradient(#e0572b 0 25%,#f2b632 0 50%,#1f7a5a 0 75%,#2b1f5c 0)!important}
+footer{color:var(--muted);font-size:13px;text-align:center}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}}
+</style>
+</head>
+<body>
+<div id="home">
+  <header><div class="wrap">
+    <div class="eyebrow">RESTKAMP Choir</div>
+    <h1 id="progName">Assemblies of Praise</h1>
+    <p class="sub" id="progDates"></p>
+  </div></header>
+  <main><div class="wrap" id="homeBody"></div></main>
+</div>
+<div id="detail" hidden>
+  <div class="top"><div class="wrap">
+    <button class="back" id="backBtn" type="button">← Back</button>
+    <span class="crumb" id="crumb"></span>
+  </div></div>
+  <main><div class="wrap" id="detailBody"></div></main>
+</div>
+<script>
+/* ============ EDIT THIS SECTION ONLY ============
+   Each day has a date, a uniform (gents + ladies), and two programmes:
+   pw  = Praise & Worship, min = Ministration.
+   Each programme is a list of parts (e.g. Opening worship, Praise).
+   Song: { t:"title", by:"artist", yt:"youtube link" }  (by and yt are optional;
+   with no link the button searches YouTube for the title)              */
+const PROGRAMME = {
+  name: "Assemblies of Praise 2026",
+  dates: "Tue 29 – Thu 31 December 2026",
+  days: [
+    { date:"Tue 29 Dec",
+      uniform:{ gents:"Sky blue shirt + deep blue trousers",
+                ladies:"Sky blue blouse + deep blue skirt / trousers + pumps",
+                colors:["#87c3ea","#1f3a8a"] },
+      pw:[
+        { name:"Opening worship", lead:"Mrs Ojo", songs:[
+          {t:"Halleluyah, Holy, Holy", yt:"https://youtu.be/rBeEqA1VrNk"},
+          {t:"You Alone Deserve Our Praise", yt:"https://youtu.be/QDR_a4VDLzI"},
+          {t:"No One Can See the End of Your Grace (Ah Ah Ah)", yt:"https://youtu.be/UwrCydj3lec"},
+          {t:"Alagbara, You Are the Mighty God (Eyin L'atobi Ju)", yt:"https://youtu.be/KYPF2vh_Udk"} ]},
+        { name:"Praise", lead:"Mr Femi", songs:[
+          {t:"Miracle No Dey Tire Jesus", yt:"https://youtu.be/a6kAbZuDIdA"},
+          {t:"You've Done So Much for Me, I Cannot Tell It All", yt:"https://youtu.be/bhZKHBIPYPA"},
+          {t:"Jehovah Reigns / You Are Lifted Up Above Other Gods", yt:"https://youtu.be/SK9Qh_EV-b0"},
+          {t:"Daily As I Breathe (Let My Whole Life Be an Expression of Your Grace)", yt:"https://youtu.be/dI5ruzWw-Hg"},
+          {t:"You Reign, Ancient Zion's King"},
+          {t:"My Daddy, My Daddy (Your Baby Is Singing)", yt:"https://youtu.be/28ErbUoG2Jw"},
+          {t:"When You See Me Dance, I Dance as a Winner", yt:"https://youtu.be/_qijiRK8w7I"},
+          {t:"See What the Lord Has Done"},
+          {t:"This Kind God, Another One No Dey", yt:"https://youtu.be/ZJxyx0bMxXE"},
+          {t:"Obrigado (Ximkwembu Zamatimba)", yt:"https://youtu.be/bDtvEoJOixA"},
+          {t:"I'll Praise in the Valley, I'll Praise on the Mountain", yt:"https://youtu.be/f2oxGYpuLkw"} ]},
+        { name:"Closing worship", lead:"", songs:[
+          {t:"Every Tongue in Heaven and Earth Shall Declare Your Glory", yt:"https://youtu.be/V4dR_zuB3qk"} ]}
+      ],
+      min:[] },
+    { date:"Wed 30 Dec",
+      uniform:{ gents:"Black shirt + black trousers + colourful tie",
+                ladies:"Black dress + coloured blazer + black pumps",
+                colors:["#111111","#c0392b"] },
+      pw:[
+        { name:"Opening worship", lead:"Cynthia", songs:[
+          {t:"I Surrender All (Everything I Give to You, Withholding Nothing)"},
+          {t:"I Give Myself Away"},
+          {t:"Touch Me with Your Hand, Jesus"},
+          {t:"I Will Not Be Silent"} ]},
+        { name:"Praise", lead:"Sis Kike", songs:[
+          {t:"The Battle Belongs to God", by:"Nathaniel Bassey", yt:"https://youtu.be/0f33q6v5CjY"},
+          {t:"You Are You", by:"Nathaniel Bassey", yt:"https://youtu.be/pKbjAt7lyXc"},
+          {t:"You Surround Me with Many Victories", by:"Nathaniel Bassey", yt:"https://youtu.be/OOxGJkaWzBI"},
+          {t:"Have You Seen the Lord Fail", by:"Judikay", yt:"https://youtu.be/lVr-xrZgKoY"},
+          {t:"Capable God", by:"Judikay", yt:"https://youtu.be/XEeFZw9s_8Q"},
+          {t:"This Is My Story, This Is My Song", by:"Dunsin Oyekan ft. Lawrence Oyor", yt:"https://youtu.be/lrdmnAn9gxk"},
+          {t:"Wonderful Wonder", yt:"https://youtu.be/lw0-n4EIVxQ"},
+          {t:"Many Battles, Many Struggles", by:"Dunsin Oyekan", yt:"https://youtu.be/qesfKdKxXl0"} ]},
+        { name:"Closing worship", lead:"", songs:[] }
+      ],
+      min:[] },
+    { date:"Thu 31 Dec",
+      uniform:{ gents:"Black trousers + anniversary Ankara shirt",
+                ladies:"Anniversary Ankara kimono dress + black head tie",
+                colors:["#111111","ankara"] },
+      pw:[], min:[] }
+  ]
+};
+/* ================================================ */
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const LABEL = {pw:"Praise & Worship", min:"Ministration"};
+const search = s => "https://www.youtube.com/results?search_query=" + encodeURIComponent(s.t + " " + (s.by||""));
+const swatches = u => `<span class="swatches">${u.colors.map(c=>c==="ankara"?`<span class="swatch ankara"></span>`:`<span class="swatch" style="background:${esc(c)}"></span>`).join("")}</span>`;
+const leads = parts => parts.filter(p=>p.lead).map(p=>`${p.name.startsWith("Opening ")?"Worship":p.name}: ${p.lead}`).join(" · ");
+const count = parts => parts.reduce((n,p)=>n+p.songs.length,0);
+
+function renderHome(){
+  $("progName").textContent = PROGRAMME.name;
+  $("progDates").textContent = PROGRAMME.dates;
+  let h = "";
+  PROGRAMME.days.forEach((d,i)=>{
+    const n=i+1;
+    h += `<section class="day">
+      <div class="dayhead"><h2>Day ${n}</h2><span class="date">${esc(d.date)}</span></div>
+      <div class="btns">
+        ${["pw","min"].map(k=>{ const c=count(d[k]);
+          return `<button class="btn ${k}" type="button" data-go="day${n}-${k}">
+          <span class="k">Day ${n}</span><span class="t">${LABEL[k]}</span>
+          <span class="lead">${c ? esc(leads(d[k]) || c+" songs") : "Not posted yet"}</span></button>`;}).join("")}
+      </div>
+      <div class="uni">${swatches(d.uniform)}Uniform: ${esc(d.uniform.gents.split(" + ")[0])} &amp; more</div>
+    </section>`;
+  });
+  h += `<button class="allbtn" type="button" data-go="uniforms">Uniform schedule (all days)</button>
+        <footer>Tap any button to see the lineup. Songs open on YouTube.</footer>`;
+  $("homeBody").innerHTML = h;
+}
+
+const wear = u => `<div class="wear"><div><b>Gents</b><span>${esc(u.gents)}</span></div><div><b>Ladies</b><span>${esc(u.ladies)}</span></div></div>`;
+
+function renderDetail(token){
+  let m = token.match(/^day(\d)-(pw|min)$/), body="", crumb="";
+  if(m){
+    const n=+m[1], k=m[2], d=PROGRAMME.days[n-1]; if(!d) return false;
+    crumb = `Day ${n} · ${LABEL[k]}`;
+    const parts = d[k].length ? d[k].map(p=>`<div class="part">
+        <div class="parthead"><h3>${esc(p.name)}</h3>${p.lead?`<span class="who">Lead: <b>${esc(p.lead)}</b></span>`:""}</div>
+        ${p.songs.length ? `<ol class="songs">${p.songs.map(s=>`<li>
+          <div class="song"><b>${esc(s.t)}</b>${s.by?`<span>${esc(s.by)}</span>`:""}</div>
+          ${s.yt ? `<a class="yt" href="${esc(s.yt)}" target="_blank" rel="noopener">▶ Play</a>`
+                 : `<a class="yt search" href="${search(s)}" target="_blank" rel="noopener">Find</a>`}</li>`).join("")}</ol>`
+          : `<div class="empty">Songs to be confirmed.</div>`}
+      </div>`).join("")
+      : `<div class="empty">The ${LABEL[k]} lineup for Day ${n} has not been posted yet. Check back soon.</div>`;
+    body = `<div class="dhead"><span class="eyebrow" style="color:var(--${k})">Day ${n} · ${esc(d.date)}</span>
+      <h2>${LABEL[k]}</h2></div>
+      <div class="section-label">Wear today</div>${wear(d.uniform)}
+      ${parts}`;
+  } else if(token==="uniforms"){
+    crumb="Uniform schedule";
+    body = `<div class="dhead"><span class="eyebrow">AOP 2026</span><h2>Uniform schedule</h2></div>
+      ${PROGRAMME.days.map((d,i)=>`<div class="part"><div class="parthead"><h3>Day ${i+1}</h3><span class="who">${swatches(d.uniform)} ${esc(d.date)}</span></div>${wear(d.uniform)}</div>`).join("")}`;
+  } else return false;
+  $("crumb").textContent = crumb;
+  $("detailBody").innerHTML = body;
+  return true;
+}
+
+function show(token){
+  if(token && renderDetail(token)){ $("home").hidden=true; $("detail").hidden=false; }
+  else { $("detail").hidden=true; $("home").hidden=false; }
+  window.scrollTo(0,0);
+}
+let navigated=false;
+document.addEventListener("click",e=>{ const b=e.target.closest("[data-go]"); if(b){ navigated=true; location.hash=b.dataset.go; } });
+$("backBtn").addEventListener("click",()=>{ if(navigated){ navigated=false; history.back(); } else { location.hash=""; } });
+window.addEventListener("hashchange",()=>show(location.hash.slice(1)));
+renderHome();
+show(location.hash.slice(1));
+</script>
+</body>
+</html>
