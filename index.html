@@ -59,7 +59,7 @@ main .wrap{padding-block:20px 40px;display:grid;gap:22px}
 /* Detail view */
 .top{position:sticky;top:env(safe-area-inset-top,0px);background:var(--band);color:var(--band-ink);z-index:5}
 .top .wrap{padding-block:12px;display:flex;align-items:center;gap:12px}
-.back{all:unset;cursor:pointer;font-weight:600;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.12)}
+.back{all:unset;box-sizing:border-box;cursor:pointer;font-weight:700;font-size:17px;min-height:48px;display:inline-flex;align-items:center;gap:6px;padding:0 20px;border-radius:999px;background:var(--gold);color:var(--gold-ink);box-shadow:0 4px 14px rgba(0,0,0,.25)}
 .back:focus-visible{outline:3px solid var(--gold)}
 .top .crumb{font-size:14px;opacity:.85;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dhead{display:grid;gap:4px}
@@ -89,7 +89,7 @@ footer{color:var(--muted);font-size:13px;text-align:center}
 
 <div id="home">
   <header><div class="wrap">
-    <a class="eyebrow" href="https://restkamp-choir-hub.vercel.app" style="text-decoration:none">← RESTKAMP Choir Hub</a>
+    <a href="https://restkamp-choir-hub.vercel.app" style="display:inline-flex;align-items:center;gap:6px;width:max-content;min-height:44px;padding:0 18px;border-radius:999px;background:var(--gold);color:var(--gold-ink);font-weight:700;font-size:15px;text-decoration:none;margin-bottom:8px">← RESTKAMP Choir Hub</a>
     <h1 id="progName">Assemblies of Praise</h1>
     <p class="sub" id="progDates"></p>
   </div></header>
